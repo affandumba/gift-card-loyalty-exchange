@@ -1,0 +1,77 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Use Case Diagram" id="uc-diagram-ps34">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- System boundary -->
+        <mxCell id="boundary" value="Digital Gift Card &amp; Loyalty Point Exchange" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="280" y="40" width="480" height="560" as="geometry" />
+        </mxCell>
+
+        <!-- Use cases -->
+        <mxCell id="uc01" value="UC-01&#10;Link Merchant Account" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="330" y="90" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="uc02" value="UC-02&#10;Convert Points to Credits" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="330" y="200" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="uc03" value="UC-03&#10;Redeem Gift Card" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="330" y="310" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="uc04" value="UC-04&#10;Lock Voucher" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="590" y="130" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="uc05" value="UC-05&#10;Notify Merchant" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="590" y="280" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="uc06" value="UC-06&#10;Flag Suspicious Redemption" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="330" y="420" width="200" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Actors -->
+        <mxCell id="actorHolder" value="Account Holder" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="140" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="actorMerchant" value="Merchant Partner" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="900" y="290" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="actorRateEngine" value="Exchange Rate Service" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="400" width="30" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Associations -->
+        <mxCell id="e1" style="html=1;endArrow=none;" edge="1" parent="1" source="actorHolder" target="uc01">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="html=1;endArrow=none;" edge="1" parent="1" source="actorHolder" target="uc02">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="html=1;endArrow=none;" edge="1" parent="1" source="actorHolder" target="uc03">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="html=1;endArrow=none;" edge="1" parent="1" source="actorMerchant" target="uc05">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="html=1;endArrow=none;" edge="1" parent="1" source="actorRateEngine" target="uc02">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Include relationships -->
+        <mxCell id="inc1" value="&lt;&lt;include&gt;&gt;" style="html=1;dashed=1;endArrow=open;endFill=0;fontStyle=2;" edge="1" parent="1" source="uc03" target="uc04">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inc2" value="&lt;&lt;include&gt;&gt;" style="html=1;dashed=1;endArrow=open;endFill=0;fontStyle=2;" edge="1" parent="1" source="uc03" target="uc05">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Extend relationship -->
+        <mxCell id="ext1" value="&lt;&lt;extend&gt;&gt;" style="html=1;dashed=1;endArrow=open;endFill=0;fontStyle=2;" edge="1" parent="1" source="uc06" target="uc03">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
