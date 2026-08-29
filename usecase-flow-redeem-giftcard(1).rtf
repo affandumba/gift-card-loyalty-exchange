@@ -1,0 +1,31 @@
+{\rtf1\ansi\deff0
+{\fonttbl{\f0 Calibri;}}
+\f0\fs28\b Use-Case Flow Specification\b0\fs22\line
+\fs24\b Use Case: Redeem Gift Card\b0\fs22\line
+Primary Actor: Account Holder\line
+Supporting Actors: System (voucher/ledger engine), Merchant Partner (receives redemption notice)\line\line
+
+\b Preconditions\b0\line
+1. The Account Holder is logged into the wallet app.\line
+2. The Account Holder's exchange credit balance is greater than zero.\line\line
+
+\b Postconditions (on success)\b0\line
+1. A single-use voucher code has been generated and delivered to the Account Holder's wallet.\line
+2. The Account Holder's credit balance has been debited by the gift card's value.\line
+3. The voucher is locked against reuse and the issuing Merchant Partner has been notified of the redemption.\line\line
+
+\b Main Success Scenario\b0\line
+1. Account Holder opens a Merchant Partner's gift card catalogue in the app.\line
+2. Account Holder selects a gift card denomination and confirms the redemption.\line
+3. System checks that the Account Holder's exchange credit balance covers the gift card's value.\line
+4. System deducts the required credits and generates a single-use voucher code with a cryptographic checksum.\line
+5. System locks the voucher via \i Lock Voucher\i0  («include») so it cannot be redeemed a second time.\line
+6. System delivers the voucher code to the Account Holder's wallet.\line
+7. System notifies the Merchant Partner of the redemption via \i Notify Merchant\i0  («include»), including the voucher ID and timestamp.\line
+8. Use case ends successfully.\line\line
+
+\b Alternate Flow \endash  3a. Insufficient Credit Balance\b0\line
+3a1. System detects that the Account Holder's credit balance is less than the gift card's value.\line
+3a2. System displays an "insufficient balance" message and suggests converting more loyalty points.\line
+3a3. Account Holder either converts more points and retries from step 2, or cancels the redemption. If cancelled, no credits are deducted and the use case ends without a voucher being issued.\line
+}
