@@ -1,45 +1,49 @@
 # Gift Card & Loyalty Point Exchange
 
-> Requirements analysis and use-case modeling for a wallet application that converts loyalty points from linked merchant accounts into a unified exchange credit, redeemable for digital gift cards.
+> Software Engineering coursework — requirements engineering, use-case modeling, and architectural design for a wallet application that converts loyalty points from linked merchant accounts into a unified exchange credit, redeemable for digital gift cards.
+
+**Author:** Affan Dumba &nbsp;|&nbsp; **SRN:** PES1UG24CS280 &nbsp;|&nbsp; **Section:** E
+**Problem Statement #34** — Retail, E-Commerce & Finance
 
 ## Overview
 
-This repository contains the requirements engineering artifacts for a system that:
+This repository contains the lab deliverables for a system that:
 - Aggregates loyalty points across multiple linked merchant accounts
-- Converts aggregated points into a single exchange credit balance
+- Converts aggregated points into a single exchange credit balance at dynamic rates
 - Allows users to redeem that credit for digital gift cards from any participating merchant
+- Locks single-use vouchers with anti-fraud checks at redemption time
 
-## Repository Contents
+## Repository Structure
+
+All lab deliverables are organized under `SELABS/`, one folder per lab:
+
+```
+SELABS/
+├── Lab1/   Requirements Engineering & UML Use-Case Modelling
+└── Lab3/   Component Modelling & Architectural Pattern Selection
+```
+
+### SELABS/Lab1 — Requirements Engineering & UML Use-Case Modelling
 
 | File | Description |
 |------|-------------|
-| `requirements-table.xlsx` | Functional and non-functional requirements, including priority, acceptance criteria, and rationale |
-| `usecase-diagram.drawio` | UML use-case diagram showing system actors and their relationships to core use cases |
-| `usecase-flow-redeem-giftcard.rtf` | Detailed flow specification for the Redeem Gift Card use case |
+| `Requirements_Table_Affan_Dumba_PES1UG24CS280.xlsx` | Functional (FR-001–FR-005) and non-functional (NFR-001, NFR-002) requirements, with ID, priority, acceptance criteria, and rationale |
+| `UseCase_Diagram_Affan_Dumba_PES1UG24CS280.drawio` | UML use-case diagram showing system actors and their relationships to core use cases, including `<<include>>` and `<<extend>>` |
+| `UseCase_Flow_RedeemGiftCard_Affan_Dumba_PES1UG24CS280.rtf` | Flow specification for the Redeem Gift Card use case — preconditions, postconditions, main success scenario, and an alternate flow |
 
-## Actors
+**Actors:** Account Holder, Merchant Partner, Exchange Rate Service, System
 
-- **Account Holder** — the end user of the wallet app
-- **System** — the voucher and ledger engine
-- **Merchant Partner** — receives redemption notifications
-- **Exchange Rate Service** — supplies point-to-credit conversion rates
+**Core use cases:** Link Merchant Loyalty Account · Convert Points to Credits · Redeem Gift Card · Lock Voucher *(include)* · Notify Merchant *(include)* · Flag Suspicious Redemption *(extend)*
 
-## Use Cases
+### SELABS/Lab3 — Component Modelling & Architectural Pattern Selection
 
-1. Link Merchant Loyalty Account
-2. Convert Points to Credits
-3. Redeem Gift Card
-4. Lock Voucher *(include)*
-5. Notify Merchant *(include)*
-6. Flag Suspicious Redemption *(extend)*
+| File | Description |
+|------|-------------|
+| `Component_Diagram_Affan_Dumba_PES1UG24CS280.pdf` | UML component diagram — 6 components, 6 provided/required interfaces, and a `<<use>>` dependency, modeled as a Microservices architecture |
+| `Lab3_Architecture_Justification_Affan_Dumba_PES1UG24CS280.pdf` | One-page written justification: architectural choice, two scenario-specific reasons, security advantage, and performance benefit |
 
-## Featured Flow: Redeem Gift Card
-
-The `usecase-flow-redeem-giftcard.rtf` document details the primary redemption flow, including:
-- Preconditions and postconditions
-- Main success scenario (catalogue browsing → confirmation → credit deduction → voucher generation → merchant notification)
-- Alternate flow for insufficient credit balance
+**Architecture:** Microservices — Account Holder Portal, Loyalty Aggregation Service, Point Conversion Engine, Voucher & Gift Card Service, Merchant Integration Service, Ledger Database
 
 ---
 
-*Software Engineering coursework — requirements specification and use-case modeling.*
+*PES University — Dept. of CSE — Software Engineering Lab coursework.*
