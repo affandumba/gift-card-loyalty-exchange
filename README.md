@@ -20,7 +20,8 @@ All lab deliverables are organized under `SELABS/`, one folder per lab:
 ```
 SELABS/
 ├── Lab1/   Requirements Engineering & UML Use-Case Modelling
-└── Lab3/   Component Modelling & Architectural Pattern Selection
+├── Lab3/   Component Modelling & Architectural Pattern Selection
+└── Lab4/   Vibe Coding - Pac-Man repair (bug fix + 3 features)
 ```
 
 ### SELABS/Lab1 — Requirements Engineering & UML Use-Case Modelling
@@ -43,6 +44,22 @@ SELABS/
 | `Lab3_Architecture_Justification_Affan_Dumba_PES1UG24CS280.pdf` | One-page written justification: architectural choice, two scenario-specific reasons, security advantage, and performance benefit |
 
 **Architecture:** Microservices — Account Holder Portal, Loyalty Aggregation Service, Point Conversion Engine, Voucher & Gift Card Service, Merchant Integration Service, Ledger Database
+
+### SELABS/Lab4 — Vibe Coding: Pac-Man Repair
+
+| File | Description |
+|------|-------------|
+| `game.py` | Final Pygame Pac-Man: power pellet bug fixed (`"O"` vs `"o"`), per-ghost frightened colours, bonus fruit + last-pellet HUD flash, bonus life at 1000 points |
+| `original_code/game_original.py` | Untouched starter code (before changes) |
+| `Lab4_Before_Affan_Dumba_PES1UG24CS280.mp4` | 10 s clip of the original build showing the bug |
+| `Lab4_After_Affan_Dumba_PES1UG24CS280.mp4` | 10 s clip of the fixed build |
+| `Lab4_After_Features_Affan_Dumba_PES1UG24CS280.mp4` | Clip of bonus fruit, bonus life and win screen |
+| `Lab4_Notes_Affan_Dumba_PES1UG24CS280.md` | What was changed, prompts used, how it was verified |
+| `Lab4_Chat_History_Affan_Dumba_PES1UG24CS280.pdf` | Chat history with the LLM |
+| `PacMan_Lab_README.md` | Original lab README (tasks and expected behaviour) |
+| `tools/play_and_record.py` | Script used to record the clips from the real game window |
+
+Run it with `pip install pygame` then `python SELABS/Lab4/game.py`.
 
 ---
 
