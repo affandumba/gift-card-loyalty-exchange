@@ -1,6 +1,9 @@
+import asyncio
 import hashlib
 import os
-import random
+import re
+import secrets
+import shutil
 
 QUESTIONS = [
     {"q": "What is 2 + 2?", "answer": "4"},
@@ -8,16 +11,16 @@ QUESTIONS = [
     {"q": "What does CPU stand for?", "answer": "Central Processing Unit"},
     {"q": "Which type is immutable: list or tuple?", "answer": "tuple"},
 ]
-PROCTOR_PASSWORD = "proctor-demo"
+PROCTOR_PASSWORD = os.environ.get("PROCTOR_PASSWORD", "")
 results = {}
 
 
 def hashAnswer(text):
-    return hashlib.md5(text.strip().lower().encode()).hexdigest()
+    return hashlib.sha256(text.strip().lower().encode()).hexdigest()
 
 
 def pickBonusQuestion():
-    return random.choice(QUESTIONS)["q"]
+    return secrets.choice(QUESTIONS)["q"]
 
 
 def gradeStudent(studentName, responses, penalties={}):
@@ -53,7 +56,21 @@ def topper():
 
 def lockScreen(labPc):
     # Helper kept for the lab: not called by the demo
-    os.system("ssh " + labPc + " lock-screen")
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9.\-]*", labPc):
+        raise ValueError("invalid lab PC hostname: " + repr(labPc))
+    ssh = shutil.which("ssh")
+    if ssh is None:
+        raise FileNotFoundError("ssh client not found")
+    asyncio.run(runSsh([ssh, "-o", "BatchMode=yes", "-o", "ConnectTimeout=5",
+                        labPc, "lock-screen"]))
+
+
+async def runSsh(argv):
+    # argument list only, no shell
+    process = await asyncio.create_subprocess_exec(*argv)
+    status = await process.wait()
+    if status != 0:
+        raise RuntimeError(f"ssh exited with status {status}")
 
 
 def main():
