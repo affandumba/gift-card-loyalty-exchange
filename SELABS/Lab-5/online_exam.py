@@ -54,6 +54,7 @@ def classAverage():
 def topper():
     return max(results, key=results.get)
 
+
 def lockScreen(labPc):
     # Helper kept for the lab: not called by the demo
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9.\-]*", labPc):
@@ -81,10 +82,11 @@ def main():
     gradeStudent("Sameer", {0: "5", 3: "list"})
     for name, score in results.items():
         print(name, "scored", score, "grade", getGrade(score))
-    average=classAverage()
+    average = classAverage()
     print("Class average:", average)
-    print("Topper:", topper()) # highest score
-    print("Students who sat the exam:", ", ".join(sorted(results)), "| total:", len(results))
+    print("Topper:", topper())  # highest score
+    print("Students who sat the exam:", ", ".join(sorted(results)),
+          "| total:", len(results))
 
 
 main()
