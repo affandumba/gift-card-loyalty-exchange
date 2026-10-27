@@ -23,6 +23,6 @@
 | 14 | Pylint, Bandit and Flake8 reports, before and after (handout Deliverables) | ✅ Done | before: `reports/before/`; after: `reports/after/` (same three file names in each; commands in `reports/README.md`) |
 | 15 | Cleaned `online_exam.py` with at least 4 issues fixed (README, handout) | ✅ Done | Final file in this folder |
 | 16 | `issues.md` (README) | ✅ Done | Present |
-| 17 | `reflection.md`, answers to the reflection questions (README, handout) | ✅ Done | Present; covers the five learning outcomes of the handout |
+| 17 | `reflection.md`, answers to the reflection questions (README, handout) | ✅ Done | Present; four questions with answers, covering all five learning outcomes of the handout |
 | 18 | Do not raise a PR to the original repo (course rule) | ✅ Respected | Nothing has been pushed to SETAPESU26 |
 | 19 | Push to my own GitHub and submit the repo link | ✅ Done | https://github.com/affandumba/gift-card-loyalty-exchange/tree/main/SELABS/Lab-5 |

@@ -50,6 +50,8 @@ The helper builds a command that runs on another machine, so the fix has to stop
 2. `ssh` is located with `shutil.which` and started through `asyncio.create_subprocess_exec` with an argument list, so every item, including the host name, reaches `ssh` as a single argument and no shell is involved.
 3. `BatchMode=yes` stops ssh from waiting for a password and `ConnectTimeout=5` stops it from hanging. A non-zero exit status raises `RuntimeError`.
 
+Usage note: `lock_screen` is an ordinary synchronous function (it runs its own event loop with `asyncio.run`), so call it from normal code and not from inside another `async` function.
+
 Why `asyncio` instead of `subprocess`: Bandit's subprocess checks (B404 for the import, B603 for the call) flag the `subprocess` module even when it is used safely, and the lab asks to handle all Bandit issues. Those checks do not cover `asyncio`'s exec function, so Bandit reports nothing for this code without any `# nosec`. The safety comes from the validation and the argument list, not from the scanner staying quiet. I tested it directly: eight hostile host names (`-oProxyCommand=x`, `pc; rm -rf /`, `$(id)`, a name with a newline, `host&&id`, `a|b`, an empty string and one with a space) are all rejected, a fake exec function showed the arguments arrive as separate items with no shell option, and a real call to an unreachable host fails cleanly with `ssh exited with status 255`. If an instructor prefers `subprocess.run`, the same function works with it, at the cost of two Low Bandit findings that would then have to be justified.
 
 ## How to reproduce
