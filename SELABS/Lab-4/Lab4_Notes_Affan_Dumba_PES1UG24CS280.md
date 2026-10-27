@@ -10,10 +10,9 @@
 |---|---|
 | `game.py` | final game after all fixes |
 | `original_code/game_original.py` | starter code, untouched |
-| `Lab4_Before_...mp4` | 10 s of the original build - power pellet does nothing |
-| `Lab4_After_...mp4` | 10 s of the fixed build - ghosts turn frightened, each in its own colour |
+| `Lab4_Before_...mp4` | 10 s of the original build - power pellet is eaten but the ghosts never turn frightened and still catch Pac-Man |
+| `Lab4_After_...mp4` | 10 s of the fixed build - ghosts turn frightened in their own colours and get eaten |
 | `Lab4_After_Features_...mp4` | 14 s showing bonus life, bonus fruit and the win screen (score pre-set to 900 so it fits in a short clip) |
-| `Lab4_Chat_History_...pdf` | chat with the LLM |
 | `tools/play_and_record.py` | script used to record the clips |
 
 The clips are screen captures of the real `game.py` window. The arrow-key presses are sent by a small autopilot script (it posts normal pygame key events) so the runs are repeatable.
@@ -48,5 +47,3 @@ Returns `1000`. The README suggests 10000 but the maze only has 130 pellets (abo
 2. It found the `"O"` / `"o"` mismatch and fixed it (worked first attempt).
 3. Implemented the three empty hooks one by one, checking each against what the README says about when it is called and what it returns.
 4. Asked for before/after videos, then asked for them to be real window recordings instead of simulated frames.
-
-Full chat: see `Lab4_Chat_History_Affan_Dumba_PES1UG24CS280.pdf`.

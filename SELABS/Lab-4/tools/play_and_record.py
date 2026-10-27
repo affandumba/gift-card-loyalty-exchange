@@ -43,7 +43,7 @@ class CapturedGame(RealGame):
 
 
 g.Game = CapturedGame
-random.seed(7)
+random.seed(int(os.environ.get("SEED", "7")))
 
 
 def first_step(start, goals):
@@ -92,7 +92,13 @@ def driver():
                 f"fontcolor=white:fontsize=22:x=10:y=7",
          "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "18", out])
     t0, last = time.time(), None
+    seen, log = None, []
     while time.time() - t0 < seconds + 0.3:
+        gm = holder["game"]
+        snap = (gm.score, gm.lives, gm.fright_left > 0)
+        if snap != seen:
+            log.append((round(time.time() - t0, 1),) + snap)
+            seen = snap
         step = pick(holder["game"])
         if step and step != last:
             pygame.event.post(pygame.event.Event(pygame.KEYDOWN, key=KEY_FOR[step], mod=0, unicode="", scancode=0))
@@ -100,6 +106,9 @@ def driver():
         time.sleep(0.03)
     ff.wait()
     pygame.event.post(pygame.event.Event(pygame.QUIT))
+    jumps = [b[1] - a[1] for a, b in zip(log, log[1:]) if b[1] - a[1] >= 50]
+    print("SUMMARY final", log[-1], "frightened_seen", any(e[3] for e in log),
+          "min_lives", min(e[2] for e in log), "big_score_jumps", jumps)
 
 
 threading.Thread(target=driver, daemon=True).start()
