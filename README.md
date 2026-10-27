@@ -21,7 +21,8 @@ All lab deliverables are organized under `SELABS/`, one folder per lab:
 SELABS/
 ├── Lab1/   Requirements Engineering & UML Use-Case Modelling
 ├── Lab3/   Component Modelling & Architectural Pattern Selection
-└── Lab-4/  Vibe Coding - Pac-Man repair (bug fix + 3 features)
+├── Lab-4/  Vibe Coding - Pac-Man repair (bug fix + 3 features)
+└── Lab-5/  Static Code Analysis - Pylint, Bandit and Flake8 on an online exam marker
 ```
 
 ### SELABS/Lab1 — Requirements Engineering & UML Use-Case Modelling
@@ -59,6 +60,23 @@ SELABS/
 | `tools/play_and_record.py` | Script used to record the clips from the real game window |
 
 Run it with `pip install pygame` then `python SELABS/Lab-4/game.py`.
+
+### SELABS/Lab-5 — Static Code Analysis (Pylint, Bandit, Flake8)
+
+Assigned program: `online_exam.py` (Online Examination System, repo `L5_34_online_exam`). Pylint 5.65 → **10.00/10**, Bandit 4 issues → **0**, Flake8 4 issues → **0**, with unchanged program output.
+
+| File | Description |
+|------|-------------|
+| `online_exam.py` | Cleaned program (16 issues fixed) |
+| `issues.md` | Issue table: type, line(s), description and fix approach |
+| `reflection.md` | Reflection on static analysis |
+| `requirements_status.md` | Every lab requirement with its status and evidence |
+| `reports/before/` | `pylint_report.txt`, `bandit_report.txt`, `flake8_report.txt` before the fixes |
+| `reports/after/` | The same three reports after the fixes |
+| `reports/README.md` | The exact commands used for the reports |
+| `README.md` | Original lab brief from the assigned repo |
+
+The fixes are in three separate commits, one per tool (Bandit, Flake8, Pylint). Run it with `python SELABS/Lab-5/online_exam.py`.
 
 ---
 
