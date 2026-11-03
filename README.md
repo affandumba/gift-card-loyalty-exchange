@@ -22,7 +22,8 @@ SELABS/
 ├── Lab1/   Requirements Engineering & UML Use-Case Modelling
 ├── Lab3/   Component Modelling & Architectural Pattern Selection
 ├── Lab-4/  Vibe Coding - Pac-Man repair (bug fix + 3 features)
-└── Lab-5/  Static Code Analysis - Pylint, Bandit and Flake8 on an online exam marker
+├── Lab-5/  Static Code Analysis - Pylint, Bandit and Flake8 on an online exam marker
+└── Lab-6/  Code and Branch Coverage - pytest + coverage.py on a tennis scoring module
 ```
 
 ### SELABS/Lab1 — Requirements Engineering & UML Use-Case Modelling
@@ -77,6 +78,21 @@ Assigned program: `online_exam.py` (Online Examination System, repo `L5_34_onlin
 | `README.md` | Original lab brief from the assigned repo |
 
 The fixes are in three separate commits, one per tool (Bandit, Flake8, Pylint). Run it with `python SELABS/Lab-5/online_exam.py`.
+
+### SELABS/Lab-6 — Code and Branch Coverage
+
+Assigned program: `tennis_scoring.py` (repo `L6_L7_34_tennis_scoring`). Coverage went from 32 % (starter tests) → **95 %** line coverage → **100 %** line and branch coverage (30 of 30 branches).
+
+| File | Description |
+|------|-------------|
+| `tennis_scoring.py` | Module under test (`game_score`, `set_winner`, `match_status`) |
+| `test_tennis_scoring.py` | Starter tests, unchanged |
+| `CodeCoverageTest_tennis_scoring_application.py` | 17 tests for code (line) coverage |
+| `BranchCoverageTest_tennis_scoring_application.py` | 79 tests covering every branch, including boundary values |
+| `screenshots/` | Terminal screenshots of `coverage run` and `coverage report -m` for each stage |
+| `README.md` | Results table, approach, and observations |
+
+The work is in two commits, one per stage. Run it with `pip install coverage pytest`, then `coverage run --branch -m pytest BranchCoverageTest_tennis_scoring_application.py` and `coverage report -m` inside `SELABS/Lab-6`.
 
 ---
 
