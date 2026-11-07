@@ -23,7 +23,8 @@ SELABS/
 ├── Lab3/   Component Modelling & Architectural Pattern Selection
 ├── Lab-4/  Vibe Coding - Pac-Man repair (bug fix + 3 features)
 ├── Lab-5/  Static Code Analysis - Pylint, Bandit and Flake8 on an online exam marker
-└── Lab-6/  Code and Branch Coverage - pytest + coverage.py on a tennis scoring module
+├── Lab-6/  Code and Branch Coverage - pytest + coverage.py on a tennis scoring module
+└── Lab-7/  Fuzz Testing - Hypothesis on a tennis scoring input parser
 ```
 
 ### SELABS/Lab1 — Requirements Engineering & UML Use-Case Modelling
@@ -93,6 +94,21 @@ Assigned program: `tennis_scoring.py` (repo `L6_L7_34_tennis_scoring`). Coverage
 | `README.md` | Results table, approach, and observations |
 
 The work is in two commits, one per stage. Run it with `pip install coverage pytest`, then `coverage run --branch -m pytest BranchCoverageTest_tennis_scoring_application.py` and `coverage report -m` inside `SELABS/Lab-6`.
+
+### SELABS/Lab-7 — Fuzzing for Input Validation Bugs
+
+Assigned program: `tennis_scoring.py` (repo `L6_L7_34_tennis_scoring`, lab7). Hypothesis fuzzing found crashes in all three functions; after the fix my 28 tests go from **18 failed, 10 passed** on the original code to **28 passed**, with **100 %** line and branch coverage.
+
+| File | Description |
+|------|-------------|
+| `tennis_scoring.py` | Hardened module: strict input validation, `AD` scoring, optional `strict=True` mode, re-prompting `main()` |
+| `test_tennis_scoring.py` | 28 tests: required Hypothesis no-crash tests plus property, strict-mode, limit and CLI tests |
+| `Lab7_Fuzz_Testing_Affan_Dumba_PES1UG24CS280.pdf` | Report with screenshots of every step, the bug table and both source files |
+| `screenshots/` | The 11 terminal screenshots used in the report |
+| `original_code/` | Original buggy module and a minimal no-examples Hypothesis test |
+| `README.md` | Results, bug table, what the fix does, extra checks |
+
+Run it with `pip install hypothesis pytest`, then `python -m pytest test_tennis_scoring.py -v` inside `SELABS/Lab-7`.
 
 ---
 
